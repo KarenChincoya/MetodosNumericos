@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CodeSchool mi cuenta</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Sitio web para el titulación">
+	<meta name="author" content="KIVC">
+	<link rel="icon" href="images/karen.ico">
+	<!---css-->
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/miEstilo.css" rel="stylesheet">
+	<!--javascrip-->
+	<script src="js/jquery-slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/ie10-viewport-bug-workaround.js"></script>
+	<script type="text/javascript" src="js/funciones.js"></script>
+
+	<style type="text/css">
+		body{
+			/*activar la navegación del menu dar click e irse a las secciones*/
+			position: relative;
+		}
+	</style>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+	<nav class="navbar navbar-expand-md fixed-top navbar-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="inicio.html">
+				<img src="images/k4.png">
+			</a>
+			<!--Button para diseño responsable-->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" href="inicio.html">
+				<span class="navbar-toogler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="inicio.html">Inicio <span class="sr-only">(actual)</span></a>
+					</li>
+					
+				</ul>
+			</div>
+		</div>		
+	</nav>
+	
+	<br/><br/>
+
+	<div class="container">
+		<div>
+			<h1>Mi cuenta</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div id="accordion" role="tablist" aria-multiselectable="true">
+	
+					<div class="card">
+						<div id="headingOne" class="card-header" role="tab">
+							<h5 class="mb-0">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Opciones</a>
+							</h5>
+						</div>
+
+						<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+							
+							<div class="card-block">
+								
+								<!--crear submenus-->
+								<div class="list-group">
+									<!--
+									<a class="list-group-item list-group-item-action" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Tutorial</a>
+									-->
+									<a class="list-group-item list-group-item-action" href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Crear examen</a>
+									<a class="list-group-item list-group-item-action" href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Calificar exámenes</a>
+									<a class="list-group-item list-group-item-action" href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">Historial</a>
+									<a class="list-group-item list-group-item-action" href="#tab5" aria-controls="tab4" role="tab" data-toggle="tab">Editar mis datos</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-9 col-lg-9">
+				
+				<div class="tab-content">
+					
+					<div role="tabpanel" class="tab-pane active" id="tab1">
+						
+
+					</div>
+					
+					<div role="tabpanel" class="tab-pane" id="tab2">
+						Crear examen
+						<p>
+							<button onclick="addQuestion();">Agregar pregunta</button>
+						</p>
+						<!--Se deben agregar de forma dinámica los nodos -->
+						<p>
+							<!--Crear nodos --   Tabla-->
+							<table id="tabla1" border="1" width="100%">
+								<tr>
+									<th width="10%">Número de pregunta</th>
+									<th width="30%">Pregunta</th>
+									<th width="40%">Opciones</th>
+									<th width="10">Opción correcta</th>
+									<th width="10%">Eliminar pregunta</th>
+								</tr>
+							</table>
+						</p>
+
+						<button onclick="enviarDatos();">Generar examen</button>
+						<button onclick="descargar();">Descargar examen</button>
+					</div>
+					
+					<div role="tabpanel" class="tab-pane" id="tab3">
+						Calificar exámenes
+						<p>Instrucciones:</p>
+						<p>Seleccione la hoja de respuestas del examen a calificar en formato de imagen.</p>
+
+						<form>
+							<div class="form-group">
+								<label for="exampleFormControlFile1">Seleccione el documento</label>
+								<input type="file" class="form-control-file" id="exampleFormControlFile1" name="">
+							</div>
+							<button>Calificar examen</button>
+						</form>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="tab4">
+						Tramites: 
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="tab5">
+
+						Editar mis datos.
+						<p>Información general</p>
+
+						<form method="get">
+
+						<div class="row">
+							<div class="col-sm-12">
+								Esta opción es para actualizar los datos en el sistema. 
+							</div>
+						</div>
+
+						<hr style="color: #46bc34;">
+
+						<div class="form-group row">
+    						<label for="nombre" class="col-sm-2 col-form-label">Nombres(s)</label>
+    						<div class="col-sm-10">
+      							<input type="text" class="form-control-plaintext" name="nombre" id="nombre" placeholder="">
+    						</div>
+  						</div>
+
+				  		<div class="form-group row">
+    						<label for="apellido1" class="col-sm-2 col-form-label">Apellido paterno</label>
+    						<div class="col-sm-10">
+      							<input type="text" class="form-control-plaintext" name="apellido1" id="apellido1" placeholder="">
+    						</div>
+  						</div>
+
+				  		<div class="form-group row">
+				    		<label for="apellido2" class="col-sm-2 col-form-label">Apellido materno</label>
+    						<div class="col-sm-10">
+    				  			<input type="text" class="form-control-plaintext" name="apellido2" id="apellido2" placeholder="">
+    						</div>
+  						</div>
+
+						<div class="form-group row">
+    						<label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+   							<div class="col-sm-10">
+    							<input type="email" class="form-control-plaintext" id="email" placeholder="email@example.com">
+    						</div>
+  						</div>
+
+				  		<div class="form-group row">
+				    		<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    						<div class="col-sm-10">
+      							<input type="password" class="form-control" id="password" placeholder="Password">
+    						</div>
+  						</div>
+
+				  		<div class="form-group row">
+    						<label for="staticEmail" class="col-sm-2 col-form-label">Fecha de nacimiento: </label>
+    						<div class="col-sm-10">
+      							<input type="date" class="form-control-plaintext" id="user">
+    						</div>
+  						</div>
+
+  						<div class="form-group row">
+  					  		<label for="institucion" class="col-sm-2 col-form-label">Nombre de la institución a la que pertenece</label>
+    						<div class="col-sm-10">
+      							<input type="text" class="form-control-plaintext" id="institucion" placeholder="">
+    						</div>
+  						</div>
+
+				  		<div class="form-group row">
+    						<label for="puesto" class="col-sm-2 col-form-label">Puesto</label>
+    						<div class="col-sm-10">
+      							<input type="text" class="form-control-plaintext" id="puesto" placeholder="">
+    						</div>
+  						</div>
+
+				  		<div class="form-group row">
+    						<label for="motivos" class="col-sm-2 col-form-label">Breve descripción de los motivos de suscripción: </label>
+    						<div class="col-sm-10">
+    				  			<input type="textarea" class="form-control-plaintext" id="motivos" placeholder="">
+    						</div>
+  						</div>
+
+				  		<div class="form-group row">
+  							<label for="otro" class="col-sm-2 col-form-label">Ingrese los medios por los cuales conoció codeSchool</label>
+
+			  				<div class="col-sm-10">
+  								<input type="checkbox" name="Publicidad" value="Publicidad"> Publicidad<br/>
+  								<input type="checkbox" name="">Redes sociales<br/>
+								<input type="checkbox" name="">Amigos/conocidos<br/>
+								<input type="checkbox" name="">Otro	
+  							</div>
+  						</div>
+
+				  		<div class="form-group row">
+    						<label for="otro" class="col-sm-2 col-form-label">En caso de elegir otro, describa el medio.</label>
+    						<div class="col-sm-10">
+      							<input type="text" class="form-control-plaintext" id="otro" placeholder="">
+    						</div>
+  						</div>
+
+				  		<div class="form-group row">
+  							<label for="otro" class="col-sm-2 col-form-label">Elija el tipo de suscripción:</label>
+    						<div class="col-sm-10">
+      							<div><input type="radio" id="gratis" name="tiposus" value="gratis" checked /><label for="gratis">Versión prueba</label></div>
+								<div><input type="radio" id="amigo" name="tiposus" value="amigo" /><label for="amigo">Amigo codeSchool</label></div>
+								<div><input type="radio" id="pro" name="tiposus" value="pro" /><label for="pro">Versión PRO</label></div>
+    						</div>
+  					</div>
+
+			  		<div class="form-group row">
+    					<label for="otro" class="col-sm-2 col-form-label">Código de descurnto (en caso de contar con él): </label>
+    					<div class="col-sm-10">
+      						<input type="text" class="form-control-plaintext" id="otro" placeholder="código">
+    					</div>
+  					</div>
+
+			  		<div class="form-group row">
+  						<button type="button" class="btn btn-primary">Submit</button>
+  					</div>
+  			</form>
+
+					</div>
+
+				</div>
+			</div>	
+		</div>
+
+	</div>
+</body>
+</html>
