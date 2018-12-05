@@ -24,7 +24,7 @@ def function(x, y):
 y[0] = y0
 
 for i in range(1, n):
-    y[i] = y[i-1] + function(x[i-1], y[i-1])
+    y[i] = y[i-1] + np.sin(x[i-1]) + function(x[i-1], y[i-1])
 
 #print the results
 for i in range(0, n):

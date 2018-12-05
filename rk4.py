@@ -30,9 +30,10 @@ xpoints = []
 ypoints = []
 
 r = np.array([2, 2], float)
+
 for t in tpoints:
-        xpoints += [r[1]]
-        ypoints += [r[1]]
+        xpoints += [r[2]]
+        ypoints += [r[2]]
         r += rk4(f, r, t, h)
 
 plt.plot(tpoints, xpoints)

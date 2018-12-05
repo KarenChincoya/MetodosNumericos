@@ -35,7 +35,7 @@ deltaT = (tf-0)/N
 anterior = conds_iniciales
 solucion = anterior
 
-for i in range(40, N):
+for i in range(0, N):
     actual = anterior + df_dt(anterior, t, a, b, c, d)
     solucion.append(actual)
     anterior = actual
