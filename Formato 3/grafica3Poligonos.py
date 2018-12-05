@@ -43,12 +43,24 @@ time = numpy.linspace(0.0, T, N)
 x_euler = solution[:,0]
 y_euler = solution[:,1]
 
-plt.plot(time, x_euler, label = 'Presa')
-plt.plot(time, y_euler, label = 'Depredador')
-plt.legend(loc='upper right')
-#labels
-plt.xlabel("Tiempo")
-plt.ylabel("Número de cada especie")
-#title
-plt.title("Solución del modelo Lotka-Volterra utilizando el Método polígono modificado")
+x_max = numpy.max(solution[:,0]) * 1.05
+y_max = numpy.max(solution[:,1]) * 1.05
+
+x = numpy.linspace(0, x_max, 25)
+y = numpy.linspace(0, y_max, 25)
+
+xx, yy = numpy.meshgrid(x, y)
+uu, vv = lotka_volterra_function(numpy.array([xx, yy]))
+norm = numpy.sqrt(uu**2 + vv**2)
+uu = uu / norm
+vv = vv / norm
+
+plt.figure("Campo de direcciones", figsize=(8,5))
+plt.quiver(xx, yy, uu, vv, norm, cmap=plt.cm.gray)
+plt.plot(x_euler[0:160], y_euler[0:160])#solution[:, 0], solution[:, 1]
+plt.xlim(0, x_max)
+plt.ylim(0, y_max)
+plt.title("Método de polígono modificado: Campo de direcciones de la población de presas en función de los depredadores")
+plt.xlabel('presas')
+plt.ylabel('depredadores')
 plt.show()

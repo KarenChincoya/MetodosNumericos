@@ -48,5 +48,7 @@ plt.figure('distintas_soluciones', figsize=(8,5))
 plt.contour(xx, yy, constant, 50, cmap=plt.cm.Blues)
 plt.xlabel('presas')
 plt.ylabel('depredadores')
+plt.title("Puntos criticos con distintas condiciones iniciales (0,0) y ((γ/δ,α/β) )")
+
 plt.show()
 

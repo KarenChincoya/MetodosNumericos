@@ -1,4 +1,3 @@
-#considera los puntos medios
 #requiered libraries
 import numpy
 import matplotlib.pyplot as plt
@@ -10,11 +9,8 @@ gamma = 0.3  # Predator decrease rate
 delta = 0.01 # Pretator hunting successful rate && feeding rate, cuanto alimenta cazar una presa
  
 #Function euler (Para las iteraciones) 
-def masUno(u, f, dt):
-    return u + dt * lotka_volterra_function(masMedio(u, f, dt))  # y1 = y0 + f(x0,y0) * (x1-x0) 
-
-def masMedio(u, f, dt):
-    return u + (dt/2) * (lotka_volterra_function(u))
+def euler(u, f, dt):
+    return u + dt * lotka_volterra_function(u)  # y1 = y0 + f(x0,y0) * (x1-x0) 
 
 #Lotka-Volterra equations
 def lotka_volterra_function(u):
@@ -37,18 +33,9 @@ solution[0] = numpy.array([x0, y0])
 
 # use a for loop to call the function rk2_step()
 for n in range(N-1):
-    solution[n+1] = masUno(solution[n], lotka_volterra_function, dt)
+    solution[n+1] = euler(solution[n], lotka_volterra_function, dt)
 
 time = numpy.linspace(0.0, T, N)
 x_euler = solution[:,0]
 y_euler = solution[:,1]
 
-plt.plot(time, x_euler, label = 'Presa')
-plt.plot(time, y_euler, label = 'Depredador')
-plt.legend(loc='upper right')
-#labels
-plt.xlabel("Tiempo")
-plt.ylabel("Número de cada especie")
-#title
-plt.title("Solución del modelo Lotka-Volterra utilizando el Método polígono modificado")
-plt.show()

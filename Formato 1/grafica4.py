@@ -65,4 +65,5 @@ ax[1].legend()
 ax[1].set_xlabel('tiempo')
 ax[1].set_ylabel('población')
 
+plt.title("Población de presas en función de los depredadores: Modelo interactivo ah vs modelo tradicional")
 plt.show()

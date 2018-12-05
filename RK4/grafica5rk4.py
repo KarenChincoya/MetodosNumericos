@@ -1,6 +1,5 @@
-#considera los puntos medios
 #requiered libraries
-import numpy
+import numpy 
 import matplotlib.pyplot as plt
 
 #Initial parameters
@@ -10,11 +9,11 @@ gamma = 0.3  # Predator decrease rate
 delta = 0.01 # Pretator hunting successful rate && feeding rate, cuanto alimenta cazar una presa
  
 #Function euler (Para las iteraciones) 
-def masUno(u, f, dt):
-    return u + dt * lotka_volterra_function(masMedio(u, f, dt))  # y1 = y0 + f(x0,y0) * (x1-x0) 
-
-def masMedio(u, f, dt):
-    return u + (dt/2) * (lotka_volterra_function(u))
+def nextValue(u, dt, k1, k2,k3, k4):
+    suma1 = numpy.add(k1/6,2*k2, 2*k3+k4)
+    result = u + dt *(suma1)  # y1 = y0 + f(x0,y0) * (x1-x0) 
+    print(result)
+    return result
 
 #Lotka-Volterra equations
 def lotka_volterra_function(u):
@@ -37,18 +36,27 @@ solution[0] = numpy.array([x0, y0])
 
 # use a for loop to call the function rk2_step()
 for n in range(N-1):
-    solution[n+1] = masUno(solution[n], lotka_volterra_function, dt)
+    k1  = lotka_volterra_function(solution[n])
+    k1e = ((k1[0]**2+k1[1]**2))
+
+    xk2 = solution[n][0]+dt/2 
+    yk2 = solution[n][1]+ k1e *dt/2
+    k2  = lotka_volterra_function(numpy.array([xk2,yk2]))
+    k2e = ((k2[0]**2+k2[1]**2))
+
+    xk3 = solution[n][0]+dt/2
+    yk3 = solution[n][1] + k2e*dt/2
+    k3  = lotka_volterra_function(numpy.array([xk3,yk3])) 
+    k3e = ((k3[0]**2+k3[1]**2))
+
+    xk4 = solution[n][0]+dt
+    yk4 = solution[n][1] + k3e*dt
+    k4  = lotka_volterra_function(numpy.array([xk4, yk4]))
+
+    solution[n+1] = nextValue(solution[n], dt, k1, k2, k3, k4)
 
 time = numpy.linspace(0.0, T, N)
 x_euler = solution[:,0]
 y_euler = solution[:,1]
 
-plt.plot(time, x_euler, label = 'Presa')
-plt.plot(time, y_euler, label = 'Depredador')
-plt.legend(loc='upper right')
-#labels
-plt.xlabel("Tiempo")
-plt.ylabel("Número de cada especie")
-#title
-plt.title("Solución del modelo Lotka-Volterra utilizando el Método polígono modificado")
-plt.show()
+

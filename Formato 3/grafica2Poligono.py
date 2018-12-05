@@ -1,4 +1,3 @@
-#considera los puntos medios
 #requiered libraries
 import numpy
 import matplotlib.pyplot as plt
@@ -40,15 +39,19 @@ for n in range(N-1):
     solution[n+1] = masUno(solution[n], lotka_volterra_function, dt)
 
 time = numpy.linspace(0.0, T, N)
-x_euler = solution[:,0]
-y_euler = solution[:,1]
 
-plt.plot(time, x_euler, label = 'Presa')
-plt.plot(time, y_euler, label = 'Depredador')
-plt.legend(loc='upper right')
-#labels
-plt.xlabel("Tiempo")
-plt.ylabel("Número de cada especie")
-#title
-plt.title("Solución del modelo Lotka-Volterra utilizando el Método polígono modificado")
+
+x_euler = numpy.empty(N)
+y_euler = numpy.empty(N)
+
+for i in range(N):
+    x_euler[i] = solution[i][0]
+    y_euler[i] = solution[i][1]
+    print(x_euler[i] ,",", y_euler[i])
+
+plt.figure("Presas vs depredadores", figsize=(8,5))
+plt.title("Población de presas en función de los depredadores")
+plt.plot(solution[:, 0], solution[:, 1])# x_euler[0:160], y_euler[0:160]
+plt.xlabel('presas')
+plt.ylabel('depredadores')
 plt.show()
